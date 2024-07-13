@@ -247,9 +247,8 @@ if uploaded_train is not None and uploaded_test is not None:
     buffer = BytesIO()
     submission.to_csv(buffer, index=False)
     buffer.seek(0)
-    st.download_button(label="Download Submission CSV", data=buffer, file_name="submission.csv", mime="text/csv")
-
-    st.stop()
+    if st.download_button(label="Download Submission CSV", data=buffer, file_name="submission.csv", mime="text/csv"):
+        st.stop()
     
 else:
     st.stop()
